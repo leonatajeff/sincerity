@@ -59,7 +59,7 @@ export default function Home() {
   const sendFormDataToServer = () => {
     const formattedData = formatFormData();
     // Assuming your server endpoint is /api/sendFormData
-    fetch('/api/sendFormData', {
+    fetch('/api/coverletter', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
