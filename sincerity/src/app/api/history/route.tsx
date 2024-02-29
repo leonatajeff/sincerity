@@ -1,22 +1,29 @@
-import {
-  DynamoDBClient,
-  GetItemCommand
-} from '@aws-sdk/client-dynamodb';
+import { createClient } from '@supabase/supabase-js'
+import { Database } from '@/app/interfaces/database.types'
 
-const client = new DynamoDBClient({});
+const supabase = createClient<Database>(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_ANON_KEY!
+)
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
-  const id: string | null = searchParams.get('id')
-  const { Item } = await client.send(
-    new GetItemCommand({
-      TableName: process.env.TABLE_NAME,
-      Key: {
-        userid: { S: id ?? '' }
-      },
-      ProjectionExpression: 'docs'
-    })
-  );
+  const userId = searchParams.get('userId')
 
-  return Response.json({ Item });
+  if (!userId) {
+    return Response.json({ error: 'User ID is required' })
+  }
+
+  const { data, error } = await supabase
+    .from('user')
+    .select()
+    .eq('id', userId)
+    .single()
+
+  if (error) {
+    console.error('Error fetching user:', error.message)
+    return null
+  }
+
+  return Response.json({ data })
 }
