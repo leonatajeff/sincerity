@@ -1,17 +1,12 @@
+// page.tsx in src/app/
 'use client'
-// page.tsx
-import Link from 'next/link';
-import Form from './components/form';
 
-export default function Home() {
+import { signIn } from 'next-auth/react'
 
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Form />
-
-      <Link href="/pages/history">
-        view history
-      </Link>
-    </main>
-  );
+    <div>
+      <button data-testid="sign-in-button" onClick={() => signIn('google')}>Sign in with Google</button>
+    </div>
+  )
 }

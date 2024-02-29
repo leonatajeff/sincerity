@@ -3,12 +3,12 @@ import { render, screen } from '@testing-library/react'
 import Home from '../src/app/page'
 import Form from '../src/app/page'
 
-describe('Page tests', () => {
-    it('renders sincerity form', () => {
+describe('signing in', () => {
+    it('renders google sign in', () => {
         render(<Home />)
 
         // Form itself
-        const formElement = screen.getByTestId('coverletter-form');
+        const formElement = screen.getByTestId('sign-in-button');
         expect(formElement).toBeInTheDocument();
     })
 })
