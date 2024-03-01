@@ -11,9 +11,9 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.1.0",
     "@supabase/supabase-js": "^2.39.7",
     "next": "14.1.0",
-    "next-auth": "^4.24.6",
     "react": "^18",
     "react-dom": "^18"
   },

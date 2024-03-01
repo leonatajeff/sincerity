@@ -7,7 +7,7 @@ export default function CoverLetter() {
     return (
         <div className="flex min-h-screen flex-col items-center justify-between p-24">
             <Form />
-            <Link href="/pages/history">
+            <Link href="/pages/dashboard/history">
                 view history
             </Link>
         </div>
