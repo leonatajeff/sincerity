@@ -15,15 +15,18 @@ export default function HomePage() {
   };
 
   return (
-    <div className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <a
-        className='px-7 py-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3'
-        style={{ backgroundColor: '#3b5998' }}
+    <div className="container mx-auto flex items-center h-screen flex-col justify-center px-5">
+      <h1 className="text-5xl font-bold mb-4">Crafting Cover Letters with Sincerity</h1>
+      <p className="text-lg text-gray-700 mb-8">
+        Say goodbye to the wasted hours on ignored applications, craft compelling, personalized cover letters in seconds.
+      </p>
+      
+      <button 
         onClick={loginWithGoogle}
-        role='button'
+        className="w-full sm:w-auto flex justify-center py-3 px-5 mb-4 sm:mb-0 font-medium text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
       >
         Continue with Google
-      </a>
+      </button>
     </div>
   )
 }
