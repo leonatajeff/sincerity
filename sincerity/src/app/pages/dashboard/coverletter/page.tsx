@@ -1,7 +1,7 @@
 'use client'
 // page.tsx
 import Link from 'next/link';
-import Form from 'components/form';
+import Form from '@/app/components/form';
 
 export default function CoverLetter() {
     return (

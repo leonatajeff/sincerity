@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
-import { CLForm } from '../src/app/interfaces/CLForm';
-import { sendFormDataToServer } from '../src/app/services/prompt';
+import { CLForm } from '../../ts/CLForm';
+import { sendFormDataToServer } from '../services/prompt';
 
 export default function Form() {
     const [formData, setFormData] = useState<CLForm>({
