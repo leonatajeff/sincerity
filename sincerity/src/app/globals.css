@@ -6,13 +6,18 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --form-border-radius: 0.75rem;
+  --button-border-radius: 0.25rem;
+
+  /* Font */
+  --font-family: 'Inter', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 20, 20, 20;
+    --background-end-rgb: 5, 5, 5;
   }
 }
 
@@ -26,8 +31,35 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-input {
-  color: black;
+label {
+  margin-bottom: -1rem;
+}
+
+input, textarea {
+  background: transparent;
+  border: 1px solid rgba(var(--foreground-rgb), 0.5);
+  border-radius: var(--form-border-radius);
+  padding: .625rem;
+  outline: none;
+}
+
+/* Hover effect */
+input:hover, textarea:hover {
+  border-color: rgba(var(--foreground-rgb), 0.7); /* Lighten the border color on hover */
+}
+
+/* Active (clicked) effect */
+input:active, textarea:active {
+  border-color: rgba(var(--foreground-rgb), 0.9); /* Darken the border color on active state */
+}
+
+/* Autofill Signifier */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
 }
 
 @layer utilities {

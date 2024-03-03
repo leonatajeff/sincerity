@@ -12,13 +12,13 @@ export default function Form() {
 
     const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB in bytes
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData((prevFormData) => ({
             ...prevFormData,
             [name]: value,
         }));
-    };
+    };    
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] || null;
@@ -66,7 +66,7 @@ export default function Form() {
     };
 
     return (
-        <form data-testid="coverletter-form" className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <form data-testid="coverletter-form" className="flex flex-col gap-8" onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
 
@@ -74,7 +74,7 @@ export default function Form() {
             <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
 
             <label htmlFor="job-description">Job Description:</label>
-            <input type="text" id="job-description" name="jobDescription" value={formData.jobDescription} onChange={handleChange} />
+            <textarea id="job-description" className="h-48" name="jobDescription" value={formData.jobDescription} onChange={handleChange} />
 
             <label htmlFor="resume">Upload Resume:</label>
             <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" onChange={handleFileChange} />
