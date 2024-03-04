@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import CoverLetter from '../src/app/pages/dashboard/coverletter/page'
-import { sendFormDataToServer } from '../src/app/services/prompt'
+import CoverLetter from '../src/app/dashboard/coverletter/page'
+import { sendFormDataToServer } from '../src/app/dashboard/coverletter/_services/prompt'
 
-jest.mock('../src/app/services/prompt', () => ({
+jest.mock('../src/app/dashboard/coverletter/_services/prompt', () => ({
     sendFormDataToServer: jest.fn(() => Promise.resolve('ok'))
 }));
 

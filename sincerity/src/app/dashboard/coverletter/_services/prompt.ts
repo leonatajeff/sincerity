@@ -1,4 +1,4 @@
-import { CLForm } from '@/ts/CLForm';
+import { CLForm } from '../../../../ts/CLForm';
 export const sendFormDataToServer = (formData: CLForm) => {
     const formattedData = formatFormData(formData);
     return fetch('/api/coverletter', {

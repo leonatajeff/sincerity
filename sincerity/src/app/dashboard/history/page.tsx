@@ -4,10 +4,10 @@ export default function History() {
     return (
         <div>
             <h1>History</h1>
-            <Link href="/pages/dashboard/coverletter">
+            <Link href="/dashboard/coverletter">
                 Create a new cover letter
             </Link>
-            <Link href="/pages/dashboard">
+            <Link href="/dashboard">
                 Back to dashboard
             </Link>
         </div>
