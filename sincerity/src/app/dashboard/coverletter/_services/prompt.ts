@@ -1,12 +1,15 @@
-import { CLForm } from '../../../../ts/CLForm';
-export const sendFormDataToServer = (formData: CLForm) => {
-    const formattedData = formatFormData(formData);
+export const sendFormDataToServer = (formData: FormData) => {
+    const jsonData = {
+        jobDesc: formData.get('jobDesc'),
+        resume: formData.get('resume'),
+    };
+
     return fetch('/api/coverletter', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formattedData),
+        body: JSON.stringify(jsonData),
     })
         .then((response) => {
             if (!response.ok) {
@@ -23,11 +26,3 @@ export const sendFormDataToServer = (formData: CLForm) => {
             throw error;
         });
 };
-
-const formatFormData = (formData: CLForm) => ({
-    name: formData.name ?? '',
-    email: formData.email ?? '',
-    jobDescription: formData.jobDescription ?? '',
-    resume: formData.resume instanceof File ? formData.resume.name : null,
-});
-

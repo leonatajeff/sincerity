@@ -12,13 +12,9 @@ describe('form submission', () => {
         render(<CoverLetter />)
 
         // Fill out the form
-        fireEvent.change(screen.getByLabelText('Name:'), { target: { value: 'John Doe' } })
-        fireEvent.change(screen.getByLabelText('Email:'), { target: { value: 'john.doe@example.com' } })
         fireEvent.change(screen.getByLabelText('Job Description:'), { target: { value: 'Lorem ipsum dolor sit amet' } })
 
         // Check if the form data is ready to be sent
-        expect(screen.getByLabelText('Name:')).toHaveValue('John Doe')
-        expect(screen.getByLabelText('Email:')).toHaveValue('john.doe@example.com')
         expect(screen.getByLabelText('Job Description:')).toHaveValue('Lorem ipsum dolor sit amet')
 
         // Submit the form
@@ -27,13 +23,11 @@ describe('form submission', () => {
         // Wait for promises to resolve
         await waitFor(() => expect(sendFormDataToServer).toHaveBeenCalled())
 
+
         // Add assertions for sending the form data
         // Check if the service is called with the correct form data
-        expect(sendFormDataToServer).toHaveBeenCalledWith({
-            name: 'John Doe',
-            email: 'john.doe@example.com',
-            jobDescription: 'Lorem ipsum dolor sit amet',
-            resume: null, // Assuming resume is not filled in this test
-        })
+        expect(sendFormDataToServer).toHaveBeenCalledWith(
+            expect.any(FormData)
+        );
     })
 })
