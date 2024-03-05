@@ -42,29 +42,25 @@ export default function Form() {
         }
     };
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Use formData for your logic (e.g., send it to an API)
         const formDataToSend = new FormData();
-
+    
         formDataToSend.append('jobDesc', formData.jobDesc);
         if (formData.resume) {
             formDataToSend.append('resume', formData.resume);
         }
-
         console.log(formDataToSend);
-        sendFormDataToServer(formDataToSend)
-            .then(() => {
-                // Reset form data if needed
-                setFormData({
-                    jobDesc: '',
-                    resume: null,
-                });
-            })
-            .catch((error) => {
-                // Handle error (e.g., display error message)
-                console.error('Failed to send form data:', error);
+    
+        try {
+            await sendFormDataToServer(formDataToSend);
+            setFormData({
+                jobDesc: '',
+                resume: null,
             });
+        } catch (error) {
+            console.error('Failed to send form data:', error);
+        }
     };
 
     return (
